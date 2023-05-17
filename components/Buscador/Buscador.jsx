@@ -4,14 +4,18 @@ import SearchIcon from "@mui/icons-material/Search";
 
 export default function Buscador() {
   return (
-    <><TextField
-
-      hiddenLabel
-      id="filled-hidden-label-small"
-      placeholder="Inicia tu busqueda..."
-      variant="filled"
-      size="small"
-      sx={{ width: "80%", m: 2, mt:5, ml:10, mr:1 }} /><SearchIcon sx={{mt:6}}/></>
+    <>
+      <TextField
+        hiddenLabel
+        id="filled-hidden-label-small"
+        placeholder="Inicia tu busqueda..."
+        color="white"
+        variant="filled"
+        size="small"
+        sx={{ width: "40%" }}
+      />
+      <SearchIcon sx={{ ml: 2}} />
+    </>
   );
 }
 

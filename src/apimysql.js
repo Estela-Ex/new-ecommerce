@@ -38,6 +38,20 @@ app.get("/clientes", function(request, response) {
             response.send(results);
         }
     });
+  app.post("/login", function (request, response) {
+    console.log(response.request.body, "request");
+    connection.query(
+      "SELECT * FROM clientes",
+      [],
+      function (error, results, fields) {
+        if (error) {
+          console.log(`Error al ejectuar la query: ${error}`);
+        } else {
+          response.send(results);
+        }
+      }
+    );
+  });
 
 });
 app.get("/productos", function (request, response) {

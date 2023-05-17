@@ -11,13 +11,10 @@ export default function Menu() {
           <Grid item xl={6}>
             <Grid sx={{pl:3}}container spacing={2}>
               <Grid item>
-                <Link href="#">Productos</Link>
+                <Link to="/">Home</Link>
               </Grid>
               <Grid item>
-                <Link href="#">Materiales de costura</Link>
-              </Grid>
-              <Grid item>
-                <Link href="#">Fotos</Link>
+                <Link href="#">Categorias</Link>
               </Grid>
             </Grid>
           </Grid>

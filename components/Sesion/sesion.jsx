@@ -1,20 +1,22 @@
 import { TextField, Box, Button, Typography, Checkbox } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import useFetch from '../../hooks/useFetch'
 export default function Sesion() {
   const [user, setUser] = useState(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const guid = 100;
-  async function userBbdd() {
-    const response = await fetch(`http://localhost:8000/clientes/`);
-    const data = await response.json();
-    setUser(data);
-  }
-  useEffect(() => {
-    userBbdd();
-  }, []);
+  // async function userBbdd() {
+  //   const response = await fetch(`http://localhost:8000/clientes/`);
+  //   const data = await response.json();
+  //   setUser(data);
+  // }
+  // useEffect(() => {
+  //   userBbdd();
+  // }, []);
+
 
   function login() {
     user.map((item) => {

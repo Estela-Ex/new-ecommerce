@@ -1,12 +1,25 @@
 import { Grid, List, ListItem, ListItemText, Typography } from "@mui/material";
 import AdbIcon from "@mui/icons-material/Adb";
+
+
+
 export default function Privacidad({ size, color }) {
   return (
     <>
       <Grid container sx={{ m: 2 }}>
-      <AdbIcon  fontSize="large" sx={{color:"#568203"}}/>
-        <Typography variant="h5" sx={{ textAlign: "center" }}>
-          Las Cositas de Mibel
+        <AdbIcon fontSize="medium" sx={{ color: "white" }} />
+        <Typography
+          variant="h5"
+          sx={{
+            fontSize: "1.25rem",
+            fontWeight: "700",
+            letterSpacing: ".3rem",
+            fontFamily: "openSans",
+            color: "white",
+            textAlign: "center",
+          }}
+        >
+          Blue-Magic
         </Typography>
       </Grid>
       <Grid container>
@@ -19,6 +32,7 @@ export default function Privacidad({ size, color }) {
               overflow: "auto",
               maxHeight: 300,
               "& ul": { padding: 0 },
+              color: "white"
             }}
             subheader={<li />}
           >
@@ -45,6 +59,7 @@ export default function Privacidad({ size, color }) {
               overflow: "auto",
               maxHeight: 300,
               "& ul": { padding: 0 },
+              color:"white"
             }}
             subheader={<li />}
           >
