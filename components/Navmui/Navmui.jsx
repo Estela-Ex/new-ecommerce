@@ -13,9 +13,14 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import Buscador from "../Buscador/Buscador";
+import { Link } from "@mui/material";
 
-const pages = ["Categories", "Cart"];
-const settings = ["Login","Logout"];
+const pages = [
+  { nombre: "Categories", link: "/categories" },
+  { nombre: "Cart", link: "/Cart" },
+  { nombre: "Login", link: "/Login" }
+];
+const settings = { logout: { label:"Logout",link:"/"} };
 
 function Navmui() {
   const user = "estela";
@@ -93,8 +98,8 @@ function Navmui() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page.nombre} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{page.nombre}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -121,15 +126,15 @@ function Navmui() {
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex", justifyContent:"center" } }}>
             {pages.map((page) => (
               <Button
-                key={page}
+                key={page.nombre}
+                href={page.link}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                {page}
+                {page.nombre}
               </Button>
             ))}
           </Box>
-
           {user&&<Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -152,9 +157,9 @@ function Navmui() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
+              {Object.keys(settings).map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                  <Link to={settings[setting].link} textAlign="center">{settings[setting].label}</Link>
                 </MenuItem>
               ))}
             </Menu>

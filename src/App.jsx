@@ -1,7 +1,3 @@
-// import Nav from '../components/Nav';
-// import Buscador from '../components/buscador';
-// import Carrito from '../components/carrito';
-// import Logo from '../components/logo';
 
 import Home from "../views/Home/Home";
 import { ThemeProvider } from "@emotion/react";
@@ -17,7 +13,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/Login" element={<Login />} />
           </Routes>
         </BrowserRouter>
       </div>
