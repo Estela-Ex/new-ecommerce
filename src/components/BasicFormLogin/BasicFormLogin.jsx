@@ -2,6 +2,7 @@ import { BasicFormSchemaLogin } from "./BasicFormSchemaLogin";
 import { initialValues } from "./formLogin";
 import { useFormik } from "formik";
 import { TextField, Box, Button, Typography, Checkbox } from "@mui/material";
+import { Link } from "react-router-dom";
 
 async function onSubmit(values, actions) {
   await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -39,9 +40,8 @@ export default function BasicFormLogin() {
         >
           <TextField
             id="email"
-            label="Email"
+            label="Enter your email"
             type="email"
-            placeholder="Enter your email"
             value={values.email}
             onChange={handleChange}
             onBlur={handleBlur}
@@ -52,9 +52,8 @@ export default function BasicFormLogin() {
           />
           <TextField
             id="password"
-            label="Password"
+            label="Enter your password"
             type="password"
-            placeholder="Enter your password"
             value={values.password}
             onChange={handleChange}
             onBlur={handleBlur}
@@ -76,6 +75,7 @@ export default function BasicFormLogin() {
           </Button>
         </Box>
       </form>
+      <Link to={"/Registre"}>¿Aun sin cuenta?Registrate</Link>
       {/* <pre>{JSON.stringify({ values, errors }, null, 1)}</pre> */}
     </>
   );

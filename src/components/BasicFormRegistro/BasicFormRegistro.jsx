@@ -25,7 +25,7 @@ export default function BasicFormRegistro() {
   return (
     <>
       <Typography variant="h5" sx={{ textAlign: "center" }}>
-        Registro
+        Register
       </Typography>
       <form onSubmit={handleSubmit}>
         <Box
@@ -40,9 +40,8 @@ export default function BasicFormRegistro() {
           <Grid item xs={12}>
             <TextField
               id="firstname"
-              label="firstname"
+              label="Enter your fistname"
               type="firstname"
-              placeholder="Enter your fistname"
               value={values.firstname}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -53,9 +52,8 @@ export default function BasicFormRegistro() {
             />
             <TextField
               id="lastname"
-              label="lastname"
+              label="Enter your lastname"
               type="lastname"
-              placeholder="Enter your lastname"
               value={values.lastname}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -68,9 +66,8 @@ export default function BasicFormRegistro() {
           <Grid item xs={12}>
             <TextField
               id="addres"
-              label="addres"
+              label="Enter your addres"
               type="addres"
-              placeholder="Enter your addres"
               value={values.addres}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -81,9 +78,8 @@ export default function BasicFormRegistro() {
             />
             <TextField
               id="city"
-              label="city"
+              label="Enter your city"
               type="city"
-              placeholder="Enter your city"
               value={values.city}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -96,9 +92,8 @@ export default function BasicFormRegistro() {
           <Grid item xs={12}>
             <TextField
               id="postalCode"
-              label="postalCode"
+              label="Enter your postal Code"
               type="postalCode"
-              placeholder="Enter your postalCode"
               value={values.postalCode}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -109,9 +104,8 @@ export default function BasicFormRegistro() {
             />
             <TextField
               id="email"
-              label="email"
+              label="Enter your email"
               type="email"
-              placeholder="Enter your email"
               value={values.email}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -124,9 +118,8 @@ export default function BasicFormRegistro() {
           <Grid item xs={12}>
             <TextField
               id="password"
-              label="password"
+              label="Enter your password"
               type="password"
-              placeholder="Enter your password"
               value={values.password}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -137,9 +130,8 @@ export default function BasicFormRegistro() {
             />
             <TextField
               id="passwordRepeat"
-              label="passwordRepeat"
+              label="Repeat your password"
               type="password"
-              placeholder="Repeat your password"
               value={values.passwordRepeat}
               onChange={handleChange}
               onBlur={handleBlur}

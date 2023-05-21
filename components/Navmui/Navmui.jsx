@@ -20,7 +20,7 @@ const pages = [
   { nombre: "Cart", link: "/Cart" },
   { nombre: "Login", link: "/Login" }
 ];
-const settings = { logout: { label:"Logout",link:"/"} };
+const settings = { nombre:"Logout",link:"/"} ;
 
 function Navmui() {
   const user = "estela";
@@ -159,7 +159,7 @@ function Navmui() {
             >
               {Object.keys(settings).map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Link to={settings[setting].link} textAlign="center">{settings[setting].label}</Link>
+                  <Link to={settings[setting].link} textAlign="center">{settings[setting].label}Logout</Link>
                 </MenuItem>
               ))}
             </Menu>

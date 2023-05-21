@@ -3,40 +3,29 @@ import {
   CardContent,
   CardHeader,
   CardMedia,
-  Typography,
   Grid,
+  Typography,
 } from "@mui/material";
-import StarIcon from "@mui/icons-material/Star";
 import EuroIcon from "@mui/icons-material/Euro";
-import Catalogo from "../Catalogo/Catalogo";
-import LogoutIcon from "@mui/icons-material/Logout";
-import { useState, useEffect } from "react";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
-let stars = [
-  "Estrella 1",
-  "Estrella 2",
-  "Estrella 3",
-  "Estrella 4",
-  "Estrella 5",
-];
+import { useState, useEffect } from "react";
 
-export default function Cards({ nombre, detalles, material, precio }) {
+export default function DetailsDrama() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    console.log("Me renderizo!!!");
-    fetch("http://localhost:8000/productos")
-      .then((response) => response.json())
-      .then((data) => setProducts(data));
+    console.log("me renderizooooooooooooooo");
+    async function functionFetch() {
+      const response = await fetch(`http://localhost:8000/productos`);
+      const results = await response.json();
+      setProducts(results);
+    }
+    functionFetch();
   }, []);
 
-  products.map((product, index) => {
-    <li key={index}>{product}</li>;
-  }),
-    console.log(products);
   return (
-    <>
-      {products.map((productos, i) => {
+    <Grid container sx={{ display: "flex" }}>
+      {products?.map((data, item) => {
         return (
           <Grid item xs={3}>
             <Card
@@ -49,34 +38,26 @@ export default function Cards({ nombre, detalles, material, precio }) {
                 borderStyle: "groove;",
               }}
             >
-              <CardHeader key={i} title={productos.nombredelproducto} />
-              <CardMedia
-                component="img"
-                height="280"
-                image={productos.imagen}
-              />
+              <CardHeader key={item} title={data.nombredelproducto} />
+              <CardMedia component="img" height="280" image={data.imagen} />
               <Typography variant="subtitle" color="primary"></Typography>
               <CardContent>
                 <br />
                 <Typography variant="body2" color="text.secondary">
-                  {productos.detallesdelproducto}
+                  {data.detallesdelproducto}
                 </Typography>
                 <br />
-                {productos.precio}
+                {data.precio}
                 <EuroIcon fontSize="8" />
-
                 <button color="blue" borderRadius="2px">
                   Añadir al carrito
                   <ShoppingBasketIcon fontSize="18" sx={{ align: "right" }} />
                 </button>
               </CardContent>
-              {/* <StarIcon />
-              <StarIcon />
-              <StarIcon /> */}
             </Card>
           </Grid>
         );
       })}
-    </>
+    </Grid>
   );
 }

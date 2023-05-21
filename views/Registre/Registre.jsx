@@ -1,21 +1,20 @@
-
+import { Grid } from "@mui/material";
 import Garantias from "../../components/Garantias/Garantias";
+import Navmui from "../../components/Navmui/Navmui";
 import Newsletter from "../../components/Newsletter/Newsletter";
 import Privacidad from "../../components/Privacidad/Privacidad";
-import { Grid} from "@mui/material";
-import Navmui from "../../components/Navmui/Navmui";
-import BasicFormLogin from "../../src/components/BasicFormLogin/BasicFormLogin";
-import BasicFormRegistro from '../../src/components/BasicFormRegistro/BasicFormRegistro'
+import BasicFormRegistro from "../../src/components/BasicFormRegistro/BasicFormRegistro";
 
-export default function Login() {
+
+export default function Registre() {
   return (
     <>
       <header>
         <Navmui />
       </header>
-      <Grid container spacing={12} p={10}  sx={{justifyContent:"center"}}>
+      <Grid container spacing={12} p={10} sx={{ justifyContent: "center" }}>
         <Grid item xs={6} p={12}>
-          <BasicFormLogin />
+          <BasicFormRegistro />
         </Grid>
       </Grid>
       <Garantias size={48} color={"pink"} />

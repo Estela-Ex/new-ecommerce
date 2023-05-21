@@ -5,7 +5,7 @@ import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 export default function Garantias({ size, color }) {
   return (
-    <Grid container sx={{ m: 2, p:4 }} alignContent="center" justifyContent="center">
+    <Grid container sx={{ p:4 }} alignContent="center" justifyContent="center">
       <Grid item xl={2} display="flex" alignItems="center">
         <GppGoodIcon fontSize="large" color="primary"/>
         <Typography variant="h6" sx={{ textAlign: "center" }}>
