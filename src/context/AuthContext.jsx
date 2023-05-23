@@ -8,7 +8,7 @@ const AuthContext = createContext({
 });
 
 export default function AuthContextProvider({children}) {
-    const [user, SetUser] = useState(null);
+    const [user, setUser] = useState(null);
     const [message, setMessage] = useState(null);
     
     function login(){
@@ -19,7 +19,7 @@ export default function AuthContextProvider({children}) {
         user,
         login,
         logout,
-        errorMessage
+       
     }
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }

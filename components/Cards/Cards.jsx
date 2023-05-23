@@ -6,10 +6,7 @@ import {
   Typography,
   Grid,
 } from "@mui/material";
-import StarIcon from "@mui/icons-material/Star";
 import EuroIcon from "@mui/icons-material/Euro";
-import Catalogo from "../Catalogo/Catalogo";
-import LogoutIcon from "@mui/icons-material/Logout";
 import { useState, useEffect } from "react";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 let stars = [
@@ -20,7 +17,7 @@ let stars = [
   "Estrella 5",
 ];
 
-export default function Cards({ nombre, detalles, material, precio }) {
+export default function Cards({ imagen, detallesdelproducto, precio}) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -30,12 +27,12 @@ export default function Cards({ nombre, detalles, material, precio }) {
       .then((data) => setProducts(data));
   }, []);
 
-  products.map((product, index) => {
-    <li key={index}>{product}</li>;
-  }),
-    console.log(products);
+   products.map((product, index) => {
+     <li key={index}>{product}</li>;
+   });
   return (
     <>
+   
       {products.map((productos, i) => {
         return (
           <Grid item xs={3}>
@@ -64,15 +61,16 @@ export default function Cards({ nombre, detalles, material, precio }) {
                 <br />
                 {productos.precio}
                 <EuroIcon fontSize="8" />
+                <br />
 
                 <button color="blue" borderRadius="2px">
                   Añadir al carrito
-                  <ShoppingBasketIcon fontSize="18" sx={{ align: "right" }} />
+                  <ShoppingBasketIcon
+                    fontSize="18"
+                    sx={{ align: "right", width: "100%" }}
+                  />
                 </button>
               </CardContent>
-              {/* <StarIcon />
-              <StarIcon />
-              <StarIcon /> */}
             </Card>
           </Grid>
         );
