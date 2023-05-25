@@ -6,9 +6,9 @@ const controller = {};
 
 //Controlador para añadir usario
 controller.addUser = async(req, res) => {
-    const { nombre,apellidos, email, password } = req.body;
+    const { firstname, lastname, email, password } = req.body;
     // Si no alguno de estos campos recibidos por el body devolvemos un 400 (bad request)
-    if (!nombre ||!apellidos|| !email || !password) return res.status(400).send("Error al recibir el body");
+    if (!firstname ||!lastname|| !email || !password) return res.status(400).send("Error al recibir el body");
     // Buscamos el usuario en la base de datos
     try {
         const user = await dao.getUserByEmail(email)
@@ -16,7 +16,7 @@ controller.addUser = async(req, res) => {
         if (user.length > 0) return res.status(409).send("usuario ya registrado");
         // Si no existe lo registramos
         const addUser = await dao.addUser(req.body)
-        if (addUser) return res.send(`Usuario ${name} con id: ${addUser} registrado`)
+        if (addUser) return res.send(`Usuario ${firstname} con id: ${addUser} registrado`)
     } catch (e) {
         throw new Error(e);
         console.log(e.message)
@@ -97,6 +97,22 @@ controller.deleteUser = async (req, res) => {
   }
 };
 
+controller.updateUser = async (req, res) => {
+  const { authorization } = req.headers;
+  // Si no existe el token enviamos un 401 (unauthorized)
+  if (!authorization) return res.sendStatus(401);
+
+  try {
+    // Si no nos llega ningún campo por el body devolvemos un 400 (bad request)
+    if (Object.entries(req.body).length === 0) return res.status(400).send("Error al recibir el body");
+    // Actualizamos el usuario
+    await dao.updateUser(req.params.id, req.body)
+    // Devolvemos la respuesta
+    return res.send(`Usuario con id ${req.params.id} modificado`);
+  } catch (e) {
+    console.log(e.message);
+  }
+};
 
 
 

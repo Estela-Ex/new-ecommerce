@@ -7,6 +7,7 @@ import BasicFormRegistro from "../../src/components/BasicFormRegistro/BasicFormR
 
 
 export default function Registre() {
+  
   return (
     <>
       <header>

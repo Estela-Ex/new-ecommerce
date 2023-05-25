@@ -5,7 +5,7 @@ const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
 export const BasicFormSchemaRegistro = yup.object().shape({
   firstname: yup.string("Please enter a valid firstname").required("Required"),
   lastname: yup.string("Please enter a valid lastname").required("Required"),
-  addres: yup.string("Please enter a valid addres").required("Required"),
+  address: yup.string("Please enter a valid addres").required("Required"),
   city: yup.string("Please enter a valid city").required("Required"),
   postalCode: yup
     .number("Please enter a valid postalCode")

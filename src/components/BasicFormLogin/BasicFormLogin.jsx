@@ -3,13 +3,13 @@ import { initialValues } from "./formLogin";
 import { useFormik } from "formik";
 import { TextField, Box, Button, Typography, Checkbox } from "@mui/material";
 import { Link } from "react-router-dom";
+import { useAuthContext } from "../../context/AuthContext";
 
-async function onSubmit(values, actions) {
-  await new Promise((resolve) => setTimeout(resolve, 2000));
-  actions.resetForm();
-}
+
 
 export default function BasicFormLogin() {
+  const { login, logout, user } = useAuthContext();
+  
   const {
     values,
     touched,
@@ -21,8 +21,11 @@ export default function BasicFormLogin() {
   } = useFormik({
     initialValues,
     validationSchema: BasicFormSchemaLogin,
-    onSubmit,
+    onSubmit:login(),
   });
+  
+  
+
   return (
     <>
       <Typography variant="h5" sx={{ textAlign: "center" }}>
@@ -76,6 +79,7 @@ export default function BasicFormLogin() {
         </Box>
       </form>
       <Link to={"/Registre"}>¿Aun sin cuenta?Registrate</Link>
+      {user?<span>Holaaaaaaaaaaa</span>:""}
       {/* <pre>{JSON.stringify({ values, errors }, null, 1)}</pre> */}
     </>
   );

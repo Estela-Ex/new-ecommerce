@@ -1,12 +1,16 @@
-import { TextField, Box, Button, Typography, Grid, Checkbox } from "@mui/material";
+import {
+  TextField,
+  Box,
+  Button,
+  Typography,
+  Grid,
+  Checkbox,
+} from "@mui/material";
 import { useFormik } from "formik";
-import { BasicFormSchemaRegistro } from '../BasicFormRegistro/BasicFormSchemaRegistro';
+import { BasicFormSchemaRegistro } from "../BasicFormRegistro/BasicFormSchemaRegistro";
 import { initialValues } from "../BasicFormRegistro/formRegistro";
+import { useState } from "react";
 
-async function onSubmit(values, actions) {
-  await new Promise((resolve) => setTimeout(resolve, 2000));
-  actions.resetForm();
-}
 
 export default function BasicFormRegistro() {
   const {
@@ -20,8 +24,23 @@ export default function BasicFormRegistro() {
   } = useFormik({
     initialValues,
     validationSchema: BasicFormSchemaRegistro,
-    onSubmit
-  })
+    onSubmit: register,
+  });
+  const [newUser, setNewUser] = useState(null);
+
+  async function register(values, actions) {
+    const response = await fetch("http://localhost:3001/user/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(values),
+    });
+    if (response.status === 200) {
+      setNewUser(values.firstname + " " + values.lastname);
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      actions.resetForm();
+    }
+  }
+
   return (
     <>
       <Typography variant="h5" sx={{ textAlign: "center" }}>
@@ -40,6 +59,7 @@ export default function BasicFormRegistro() {
           <Grid item xs={12}>
             <TextField
               id="firstname"
+              name="firstname"
               label="Enter your fistname"
               type="firstname"
               value={values.firstname}
@@ -52,6 +72,7 @@ export default function BasicFormRegistro() {
             />
             <TextField
               id="lastname"
+              name="lastname"
               label="Enter your lastname"
               type="lastname"
               value={values.lastname}
@@ -65,19 +86,21 @@ export default function BasicFormRegistro() {
           </Grid>
           <Grid item xs={12}>
             <TextField
-              id="addres"
-              label="Enter your addres"
-              type="addres"
-              value={values.addres}
+              id="address"
+              name="address"
+              label="Enter your address"
+              type="address"
+              value={values.address}
               onChange={handleChange}
               onBlur={handleBlur}
               size="small"
               sx={{ mb: 2, m: 1.2, width: "47%" }}
-              error={errors.addres && touched.addres}
-              helperText={errors.addres}
+              error={errors.address && touched.address}
+              helperText={errors.address}
             />
             <TextField
               id="city"
+              name="city"
               label="Enter your city"
               type="city"
               value={values.city}
@@ -92,6 +115,7 @@ export default function BasicFormRegistro() {
           <Grid item xs={12}>
             <TextField
               id="postalCode"
+              name="postalCode"
               label="Enter your postal Code"
               type="postalCode"
               value={values.postalCode}
@@ -104,6 +128,7 @@ export default function BasicFormRegistro() {
             />
             <TextField
               id="email"
+              name="email"
               label="Enter your email"
               type="email"
               value={values.email}
@@ -118,6 +143,7 @@ export default function BasicFormRegistro() {
           <Grid item xs={12}>
             <TextField
               id="password"
+              name="password"
               label="Enter your password"
               type="password"
               value={values.password}
@@ -130,6 +156,7 @@ export default function BasicFormRegistro() {
             />
             <TextField
               id="passwordRepeat"
+              name="passwordRepeat"
               label="Repeat your password"
               type="password"
               value={values.passwordRepeat}
@@ -145,8 +172,8 @@ export default function BasicFormRegistro() {
             Recordar contraseña <Checkbox defaultChecked />
           </span>
           <Button
-            disabled={isSubmitting}
             type="submit"
+            disabled={isSubmitting}
             variant="contained"
             sx={{ mb: 2 }}
           >
@@ -155,6 +182,13 @@ export default function BasicFormRegistro() {
         </Box>
       </form>
       {/* <pre>{JSON.stringify({ values, errors }, null, 1)}</pre> */}
+      {newUser ? (
+        <h6>
+          Welcome <br></br><span>{newUser}</span><span></span>
+        </h6>
+      ) : (
+        "dfsf"
+      )}
     </>
   );
 }

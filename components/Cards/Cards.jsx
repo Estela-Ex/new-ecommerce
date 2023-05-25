@@ -22,7 +22,7 @@ export default function Cards({ imagen, detallesdelproducto, precio}) {
 
   useEffect(() => {
     console.log("Me renderizo!!!");
-    fetch("http://localhost:8000/productos")
+    fetch("http://localhost:3001/productos")
       .then((response) => response.json())
       .then((data) => setProducts(data));
   }, []);

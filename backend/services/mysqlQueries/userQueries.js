@@ -29,8 +29,11 @@ userQueries.addUser = async (userData) => {
   try {
     conn = await db.createConnection();
     let userObj = {
-      nombre: userData.nombre,
-      apellidos: userData.apellidos,
+      firstname: userData.firstname,
+      lastname: userData.lastname,
+      address: userData.address,
+      city: userData.city,
+      postalcode: userData.postalcode,
       email: userData.email,
       password: md5(userData.password),
       reg_date: moment().format("YYYY-MM-DD HH:mm:ss"),
@@ -78,5 +81,36 @@ userQueries.getUserById = async (id) => {
         conn && await conn.end();
     }
 };
+// Modificar un usuario por su id
+userQueries.updateUser = async (id, userData) => {
+     // Conectamos con la base de datos y añadimos el usuario.
+     let conn = null
+     try {
+         conn = await db.createConnection();
+         // Creamos un objeto con los datos que nos puede llegar del usuario a modificar en la base de datos.
+         // Encriptamos la password con md5 si nos llega por el body, sino la declaramos como undefined
+         // y usamos la libreria momentjs para actualizar la fecha.
+         let userObj = {
+           firstname: userData.firstname,
+           lastname: userData.lastname,
+           address: userData.address,
+           city: userData.city,
+           postalcode: userData.postalcode,
+           email: userData.email,
+           password: md5(userData.password),
+
+           update_date: moment().format("YYYY-MM-DD HH:mm:ss"),
+         };
+         // Eliminamos los campos que no se van a modificar (no llegan por el body)
+         userObj = await utils.removeUndefinedKeys(userObj)
+
+         return await db.query('UPDATE users SET ? WHERE id = ?', [userObj, id], 'update', conn);
+     } catch (e) {
+        throw new Error(e);
+     } finally {
+         conn && await conn.end();
+     }
+};
+
 
 module.exports = userQueries;

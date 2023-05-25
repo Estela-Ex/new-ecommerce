@@ -2,7 +2,7 @@
 export const initialValues = {
   firstname: "",
   lastname: "",
-  addres: "",
+  address: "",
   city: "",
   postalCode: "",
   email: "",

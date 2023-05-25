@@ -1,9 +1,11 @@
+const path = require("path")
+const dao = require("../services/dao");
 const productController = {};
 
 
 // controlador para subir una o varias imágenes a nuestro servidor y base de datos
 productController.uploadImage = async (req, res) => {
-    // console.log(req.files);
+    console.log(req.files);
     try {
       // Controlamos cuando el objeto files sea null
       // Controlamos si nos viene algún tipo de archivo en el objeto files
