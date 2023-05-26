@@ -11,6 +11,7 @@ export default function AuthContextProvider({children}) {
     const [user, setUser] = useState(null);
     
     async function login(values, actions) {
+        console.log(values);
        const response = await fetch("http://localhost:3001/user/login", {
          method: "POST",
          headers: { "Content-Type": "application/json" },

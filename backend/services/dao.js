@@ -14,5 +14,14 @@ dao.deleteUser = async (id) => await userQueries.deleteUser(id);
 dao.updateUser = async (id, userData) => await userQueries.updateUser(id, userData);
 //añadir imagen
 dao.addImage = async (imageData) => await productQueries.addImage(imageData);
-
-module.exports = dao;
+// Obtener una imagen por su id
+dao.getImageById = async (id) => await productQueries.getImageById(id);
+//añadir producto
+dao.addProduct = async (productData) =>
+  await productQueries.addProduct(productData);
+//
+dao.getProductByReference = async (reference) =>
+  await productQueries.getProductByReference(reference);
+    
+    
+    module.exports = dao;
